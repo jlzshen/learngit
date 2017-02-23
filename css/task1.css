@@ -1,24 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-ul {
-    overflow: hidden;
-    margin: 5% 25%;
-    width: 50%;
-}
-
-li {
-    float: left;
-    width: 32%;
-    padding-top: 32%;
-    list-style: none;
-    border-radius: 10%;
-    background-color: #e78326;
-    margin: 0 1.25% 1.25% 0;
-}
-
-.clearfix {
-    clear: left;
-}
+body { margin: 0; }
+ul { overflow: hidden; margin: 1% 2%; width: 50%; }
+li { float: left; width: 8%; padding-top: 8%; list-style: none; border-radius: 10%; background-color: #ccc; margin: 0 0.3% 0.3% 0; }
+.clearfix { clear: left; }
