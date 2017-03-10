@@ -1,41 +1,81 @@
-function getRandomNum(n, min, max) {
-    /* 三个随机数 */
-    var arr_num = new Array(n);
-    for (var i = 0; i < n; i++) {
-        arr_num[i] = Math.floor(Math.random() * (max - min + 1) + min);
-        for (var j = 0; j < i; i++) {
+var box = document.getElementsByTagName('li');
+var arr_num = new Array(3);
+var arr_color = new Array(3);
+
+function getRandomColor() {
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + ',' + g + ',' + b + ")"; //所有方法的拼接都可以用ES6新特性`其他字符串{$变量名}`替换
+}
+
+
+function threeColor() {
+    // 三个随机颜色,但不是ccc
+    for (var i = 0; i < 3; i++) {
+        arr_color[i] = getRandomColor().toString();
+        // 随机颜色
+        for (var j = 0; j < i; j++) {
+            // 不能是一样的颜色
+            if (arr_color[i] == arr_color[j]) {
+                i = i - 1;
+                break;
+            }
+        };
+        if (arr_color[i] == "rgb(204, 204, 204)") {
+            // 不能是原色
+            i = i - 1;
+            break;
+        }
+    }
+}
+
+function threeNum() {
+    // 三个随机数字
+    for (var i = 0; i < 3; i++) {
+        arr_num[i] = Math.floor(Math.random() * 9).toString(10);
+        // 随机数字
+        for (var j = 0; j < i; j++) {
             if (arr_num[i] == arr_num[j]) {
                 i = i - 1;
                 break;
             }
-        }
+        };
+
     }
 }
 
-function getRandomColor(n) {
-    /* 三个随机颜色 */
-    var arr_color = new Array(n);
-    for (var i = 0; i < n; i++) {
-        var a = Math.floor(Math.random() * 16777216).toString(16);
-        while (a.length < 6) {
-            a = '0' + a;
-        }
-        for (var j = 0; j < i; j++) {
-            if (a == arr_color[j]) {
-                i = i - 1;
-                break;
-            }
-        }
-        arr_color[i] = a;
+function clearColor() {
+    // 清楚颜色
+    for (var i = 0; i < box.length; i++) {
+        box[i].style.background = "#ccc";
     }
 }
 
-function start() {
-    var box = document.getElementsByTagName('li');
-    var arr_num = getRandomNum(3, 0, 8);
-    var arr_color = getRandomColor(3);
+function getCss() {
+    threeColor();
+    threeNum();
+    clearColor();
+    // 将随机的颜色给随机的地址
     for (var i = 0; i < 3; i++) {
-        box[arr_num[i]].style.background = arr_color[i]; //将随机的颜色给随机的地址
+        box[arr_num[i]].style.background = arr_color[i];
     }
+}
 
+
+function on() {
+    // 开始
+    clearColor();
+    time = setInterval("getCss()", 1000);
+}
+
+function stop() {
+    // 停止
+    clearInterval(time);
+}
+
+function off() {
+    // 结束
+    clearColor();
+    clearInterval(time);
 }

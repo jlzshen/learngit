@@ -3,24 +3,29 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <title>task1</title>
     <link rel="stylesheet" href="css/task1.css" />
     <script src="js/task1.js"></script>
 </head>
-<body ">
+
+<body>
     <ul>
+        <li class="line"></li>
         <li></li>
         <li></li>
+        <li class="line "></li>
         <li></li>
-        <li class="clearfix "></li>
         <li></li>
-        <li></li>
-        <li class="clearfix "></li>
+        <li class="line "></li>
         <li></li>
         <li></li>
     </ul>
-    <button onclick="start() ">开始</button>
-    <button onclick="end() ">结束</button>
+    <div class="btn">
+        <button type="button" onclick="on()">开始</button>
+        <button type="button" onclick="stop()">停止</button>
+        <button type="button" onclick="off()">结束</button>
+    </div>
 </body>
 
 </html>
